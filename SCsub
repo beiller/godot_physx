@@ -1,0 +1,35 @@
+# SCsub
+
+Import('env')
+
+sources = [
+    "register_types.cpp",
+    "godot_physx.cpp"
+]
+
+# First, create a custom env for the shared library.
+module_env = env.Clone()
+
+# Position-independent code is required for a shared library.
+module_env.Append(CCFLAGS=['-fPIC'])
+
+# Don't inject Godot's dependencies into our shared library.
+module_env['LIBS'] = []
+
+# Define the shared library. By default, it would be built in the module's
+# folder, however it's better to output it into `bin` next to the
+# Godot binary.
+shared_lib = module_env.SharedLibrary(target='#bin/godot_physx', source=sources)
+
+# Finally, notify the main build environment it now has our shared library
+# as a new dependency.
+
+# LIBPATH and LIBS need to be set on the real "env" (not the clone)
+# to link the specified libraries to the Godot executable.
+
+env.Append(LIBPATH=['#bin'])
+
+# SCons wants the name of the library with it custom suffixes
+# (e.g. ".linuxbsd.tools.64") but without the final ".so".
+shared_lib_shim = shared_lib[0].name.rsplit('.', 1)[0]
+env.Append(LIBS=[shared_lib_shim])
