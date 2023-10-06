@@ -2,6 +2,20 @@ EXTREMELY IMPORTANT! THIS IS A WORK IN PROGRESS! ANYTHING CAN CHANGE AT ANY MOME
 
 I am not a C++ programmer. This code base is very experimental.
 
+# Badly designed build instructions
+
+Generate build
+`cmake .`
+
+Build
+`make`
+
+Outputs binary file.
+
+Run
+`./Snippet`
+
+
 # PhysX module for Godot 4+
 
 Very early stages experiment with compiling PhysX and eventually turning it into a "Custom Module" in Godot parlance.

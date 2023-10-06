@@ -1,3 +1,6 @@
+// was doing hacky stubbs to make physx link with my example script.
+
+
 void PxSetPhysXGpuProfilerCallback(physx::PxProfilerCallback* profilerCallback) {
 	return;
 }

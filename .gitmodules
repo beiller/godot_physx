@@ -1,4 +1,4 @@
 [submodule "PhysX"]
 	path = PhysX
-	url = https://github.com/NVIDIAGameWorks/PhysX.git
-	branch = 4.1
+	url = https://github.com/NVIDIA-Omniverse/PhysX.git
+	branch = 105.1-physx-5.3.0
